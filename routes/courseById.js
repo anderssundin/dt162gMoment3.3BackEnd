@@ -3,23 +3,24 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Course = require('../schemas/courseModel');
 
-// Skapa en endpoint för att hämta en kurs med id
+// course by id
 router.get('/:id', async (req, response) => {
-  // Spara medskickat id
+  // save id from req
   const id = req.params.id;
 
   try {
- const course = await Course.find({ _id: id});
+    //find by id
+    const course = await Course.find({ _id: id });
+    // if no id
+    if (course.length === 0) {
 
- if (course.length === 0){
+      response.status(404).json({
+        message: "Ingen data med detta id finns i databasen"
+      })
 
-  response.status(404).json({
-    message: "Ingen data med detta id finns i databasen"
-  })
-
- }else {
-  response.json(course); 
- }
+    } else {
+      response.json(course);
+    }
 
 
 

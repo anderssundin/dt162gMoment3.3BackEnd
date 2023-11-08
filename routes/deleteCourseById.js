@@ -5,11 +5,12 @@ const Course = require ('../schemas/courseModel');
 
 
 
-// Skapa en ny endpoint
+// delete endpoint
 router.delete('/:id',  async (req, response) => {
+    //save id
    const id = req.params.id;
 try {
-
+// send query
 const course = await Course.deleteOne({ _id: id})
 
 if (course.deletedCount === 1) {

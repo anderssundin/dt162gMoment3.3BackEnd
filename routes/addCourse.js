@@ -3,9 +3,10 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Course = require('../schemas/courseModel');
 const { reset } = require('nodemon');
-// En endpoint för att hämta alla kurser
+//Endpoint to post new course
 router.post('/', async (req, res) => {
     try {
+        // destruct request into const
         const { code, name, progression, term, syllabus } = req.body;
 
         if (!code || !name || !progression || !term || !syllabus) {

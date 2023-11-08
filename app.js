@@ -14,10 +14,10 @@ var courseDeleteRouter = require('./routes/deleteCourseById');
 var courseAddRouter = require('./routes/addCourse');
 var app = express();
 
+//Default cors settings
 app.use(cors());
 
 // Connect to database
-
 mongoose.connect('mongodb://127.0.0.1:27017/myCV')
   .then(() => {
     console.log("Connected");
@@ -37,6 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set upp endpoints
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/courses', courseIdRouter);
