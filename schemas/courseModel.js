@@ -14,9 +14,6 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    _id: {
-        type: mongoose.Schema.Types.ObjectId
-    },
     progression: {
         type: String
     },
